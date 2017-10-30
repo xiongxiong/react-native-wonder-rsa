@@ -1,6 +1,6 @@
 {
     "name": "react-native-wonder-rsa",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -8,11 +8,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/xiongxiong/react-native-wonder-rsa.git#0.0.1"
+        "url": "git+https://github.com/xiongxiong/react-native-wonder-rsa.git#0.0.2"
     },
     "keywords": [
         "react-native"
     ],
     "author": "xiongxiong <ximengwuheng@163.com>",
-    "license": "MIT
+    "license": "MIT"
 }
