@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42B182771FA7F57800A65DAE /* XRSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B182751FA7F57800A65DAE /* XRSA.m */; };
+		42E589D11FA805980049F17B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E589D01FA8058C0049F17B /* Security.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNWonderRsa.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNWonderRsa.m */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNWonderRsa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNWonderRsa.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		42B182751FA7F57800A65DAE /* XRSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRSA.m; sourceTree = "<group>"; };
+		42B182761FA7F57800A65DAE /* XRSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRSA.h; sourceTree = "<group>"; };
+		42E589D01FA8058C0049F17B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B3E7B5881CC2AC0600A0062D /* RNWonderRsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNWonderRsa.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNWonderRsa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNWonderRsa.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E589D11FA805980049F17B /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,12 +53,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		42E589CF1FA8058B0049F17B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42E589D01FA8058C0049F17B /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				42B182761FA7F57800A65DAE /* XRSA.h */,
+				42B182751FA7F57800A65DAE /* XRSA.m */,
 				B3E7B5881CC2AC0600A0062D /* RNWonderRsa.h */,
 				B3E7B5891CC2AC0600A0062D /* RNWonderRsa.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				42E589CF1FA8058B0049F17B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B182771FA7F57800A65DAE /* XRSA.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNWonderRsa.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,7 +222,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
