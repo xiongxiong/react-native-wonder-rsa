@@ -81,24 +81,35 @@ public class RNWonderRsaModule extends ReactContextBaseJavaModule {
      */
     @ReactMethod
     public void encryptWithBase64KeyString(String string, String keyStr, Callback callback) {
-        callback.invoke(Base64.toBase64String(encrypt(Base64.decode(string), keyStr)));
+        try {
+            callback.invoke(null, Base64.toBase64String(encrypt(Base64.decode(string), keyStr)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            callback.invoke("数据加密失败");
+        }
     }
 
     @ReactMethod
     private void encryptWithKeyString(String str, String keyStr, Callback callback) {
-        callback.invoke(Base64.toBase64String(encrypt(str.getBytes(), keyStr)));
+        try {
+            callback.invoke(null, Base64.toBase64String(encrypt(str.getBytes(), keyStr)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            callback.invoke("数据加密失败");
+        }
     }
 
     @ReactMethod
     private void encrypt(String str, Callback callback) {
         try {
-            callback.invoke(Base64.toBase64String(encrypt(str.getBytes(), getPublicKeyFromStr("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFDKleESk4ik2V2HhHbrqa8/T9L+6CGp1dcSF97HfrFSPXJet/kOOYln2GsVqxwHESZhvEq6Eko/aqL+MaX9meHAhZliUqXNoU4sDyFM2CMONdmqDcD+nZdg4xPZL3bppIKmZSS2o6o8KT2VIaHmgeyByOl8BOGeaXFNUvEsoE/wIDAQAB"))));
+            callback.invoke(null, Base64.toBase64String(encrypt(str.getBytes(), getPublicKeyFromStr("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFDKleESk4ik2V2HhHbrqa8/T9L+6CGp1dcSF97HfrFSPXJet/kOOYln2GsVqxwHESZhvEq6Eko/aqL+MaX9meHAhZliUqXNoU4sDyFM2CMONdmqDcD+nZdg4xPZL3bppIKmZSS2o6o8KT2VIaHmgeyByOl8BOGeaXFNUvEsoE/wIDAQAB"))));
         } catch (Exception e) {
             e.printStackTrace();
+            callback.invoke("数据加密失败");
         }
     }
 
-    private byte[] encrypt(byte[] str, PublicKey publicKey) {
+    private byte[] encrypt(byte[] str, PublicKey publicKey) throws Exception {
         try {
             Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
             Cipher cipher = Cipher.getInstance("RSA/None/PKCS1Padding", "BC");
@@ -111,7 +122,7 @@ public class RNWonderRsaModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private byte[] encrypt(byte[] str, String keyStr) {
+    private byte[] encrypt(byte[] str, String keyStr) throws Exception {
         try {
             Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
             Cipher cipher = Cipher.getInstance("RSA/None/PKCS1Padding", "BC");
@@ -124,7 +135,7 @@ public class RNWonderRsaModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private byte[] encrypt(byte[] string) {
+    private byte[] encrypt(byte[] string) throws Exception {
         try {
             Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
             Cipher cipher = Cipher.getInstance("RSA/None/PKCS1Padding", "BC");
@@ -145,15 +156,25 @@ public class RNWonderRsaModule extends ReactContextBaseJavaModule {
      */
     @ReactMethod
     public void decryptWithBase64KeyString(String string, String keyStr, Callback callback) {
-        callback.invoke(new String(decrypt(Base64.decode(string), keyStr)));
+        try {
+            callback.invoke(null, new String(decrypt(Base64.decode(string), keyStr)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            callback.invoke("数据解密失败");
+        }
     }
 
     @ReactMethod
     private void decryptWithKeyString(String str, String keyStr, Callback callback) {
-        callback.invoke(new String(decrypt(Base64.decode(str), keyStr)));
+        try {
+            callback.invoke(null, new String(decrypt(Base64.decode(str), keyStr)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            callback.invoke("数据解密失败");
+        }
     }
 
-    private byte[] decrypt(byte[] str, String keyStr) {
+    private byte[] decrypt(byte[] str, String keyStr) throws Exception {
         try {
             Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
             Cipher cipher = Cipher.getInstance("RSA/None/PKCS1Padding", "BC");
@@ -166,7 +187,7 @@ public class RNWonderRsaModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private byte[] decrypt(byte[] string) {
+    private byte[] decrypt(byte[] string) throws Exception {
         try {
             Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
             Cipher cipher = Cipher.getInstance("RSA/None/PKCS1Padding", "BC");
